@@ -15,12 +15,12 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 
+
 const requireInput=z.object({
     username:z.string().min(1),
     password:z.string().min(1)
 })
-
-app.post('/api/v1/signup',async (req,res)=>{   
+app.post('/api/v1/signup',async (req : Request,res : Response)=>{   
     const parseData=requireInput.safeParse(req.body);
     if(parseData.success){
         const username=parseData.data.username;
@@ -49,7 +49,7 @@ app.post('/api/v1/signup',async (req,res)=>{
     }
 })
 
-app.post('/api/v1/login',async (req,res)=>{
+app.post('/api/v1/login',async (req : Request,res : Response)=>{
     const parseData=requireInput.safeParse(req.body);
     if(parseData.success){
         const username=parseData.data.username;
@@ -90,8 +90,7 @@ app.post('/api/v1/login',async (req,res)=>{
     }
 })
 
-
-app.get('/api/v1/brain/',async (req,res)=>{
+app.get('/api/v1/brain/',async (req : Request,res : Response)=>{
     const hash=req.query.hash;
     const type=req.query.type;
     try{
@@ -100,31 +99,12 @@ app.get('/api/v1/brain/',async (req,res)=>{
             res.status(403).json({message:"Invalid Link"});
             return;
         }
-        const enable=linkModel.findOne({ hash: hash }).then((document) => {
-            if (document) {
-              console.log("Enabled value:", document.enabled);
-              return document.enabled;
-            } else {
-              console.log("No document found with the given hash.");
-              res.status(403).json({
-                message : 'No document found with the given hash.'
-              })
-              return 
+            const enable=linkModel.findOne({ hash: hash })
+            if(!enable){
+                res.status(403).json({
+                    message :' Link is Disabled'
+                })
             }
-          })
-          .catch((err) => {
-            console.error("Error finding document:", err);
-            res.status(403).json({
-                message : 'No document found with the given hash.'
-              })
-              return 
-          });
-
-        if(!enable){
-            res.status(403).json({
-                message :' Link is Disabled'
-            })
-        }
         const allContent=await contentModel.find({userId : link.userId}).populate("userId","username");
         if(type==='home'){
             res.status(200).json({
@@ -160,7 +140,7 @@ const requireInputFields=z.object({
 
 app.use(userMiddleware);
 
-app.get('/api/v1/brain/share',async(req,res)=>{
+app.get('/api/v1/brain/share',async(req : Request,res : Response)=>{
     if(!req.userId){
         res.status(400).json({ message: "User ID is missing" });
         return;
@@ -178,7 +158,7 @@ app.get('/api/v1/brain/share',async(req,res)=>{
     }
 })
 
-app.post("/api/v1/brain/share",async(req,res)=>{
+app.post("/api/v1/brain/share",async(req : Request,res : Response)=>{
     const enable=req.body.enable;
     if(enable){
         const userId=req.userId;
@@ -219,7 +199,7 @@ app.post("/api/v1/brain/share",async(req,res)=>{
     }
 })
 
-app.post('/api/v1/content',async (req,res)=>{
+app.post('/api/v1/content',async (req : Request,res : Response)=>{
     const parseData=requireInputFields.safeParse(req.body);
     if(parseData.success){
         const link= req.body.link;
@@ -240,25 +220,32 @@ app.post('/api/v1/content',async (req,res)=>{
             userId: req.userId,
             date: date
         })
-        const contentId : any=await contentModel.findOne({title:title}).select('_id');
-        for(let i=0;i<tags.length;i++){
-            const response : any=await tagsModel.findOne({
-                tag: tags[i]
-            }) 
-            if(response){
-                response.contentId.push(contentId);
-                await response.save();
+        const contentId=await contentModel.findOne({title:title}).select('_id');
+        if(contentId){
+            for(let i=0;i<tags.length;i++){
+                const response=await tagsModel.findOne({
+                    tag: tags[i]
+                }) 
+                if(response){
+                    response.contentId.push(contentId);
+                    await response.save();
+                }
+                else{
+                    await tagsModel.create({
+                        tag:tags[i],
+                        contentId:[contentId]
+                    })
+                }
             }
-            else{
-                await tagsModel.create({
-                    tag:tags[i],
-                    contentId:[contentId]
-                })
-            }
+            res.status(200).json({
+                message:'Content created Successfully'
+            })
         }
-        res.status(200).json({
-            message:'Content created Successfully'
-        })
+        else{
+            res.status(403).json({
+                message :'Failed to create content.'
+            })
+        }
     }
     else{
         res.status(403).json({
@@ -268,7 +255,7 @@ app.post('/api/v1/content',async (req,res)=>{
     
 })
 
-app.get('/api/v1/content',async (req,res)=>{
+app.get('/api/v1/content',async (req : Request,res : Response)=>{
     const userId=req.userId;
     const type=req.query.type;
     try{
@@ -297,7 +284,7 @@ app.get('/api/v1/content',async (req,res)=>{
     
 })
 
-app.delete('/api/v1/content',async (req,res)=>{
+app.delete('/api/v1/content',async (req : Request,res : Response)=>{
     const contentId=req.body.contentId;
     const userId=req.userId;
     try{
@@ -321,10 +308,8 @@ app.delete('/api/v1/content',async (req,res)=>{
         res.status(200).json({
             message:"Content Deleted"
         })
-    }catch(e:any){
-        res.status(500).json({
-            error:e.message
-        })
+    }catch(e){
+        res.status(500).json({message:'Server Error'})
     }
 })
 
