@@ -4,7 +4,7 @@ import { Button } from "../header components/buttons"
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'; 
 const apiUrl=import.meta.env.VITE_BACKEND_URL;
-const frontEndUrl=import.meta.env.VITE_FRONTEND_URL;
+const frontEndUrl='https://secondbrain-app.vercel.app/';
 interface params{ 
     setShowLink : (showLink : boolean)=>void
     size : number
