@@ -1,6 +1,6 @@
 import jwt ,{JwtPayload} from "jsonwebtoken";
 import { Request,Response,NextFunction } from "express";
-import { JWT_Secret } from "./config";
+const JWT_Secret=process.env.JWT_Secret || 'random';
 
 declare global{
     namespace Express{
@@ -12,7 +12,7 @@ declare global{
 
 export function userMiddleware(req : Request,res : Response,next : NextFunction){
     try {
-        const authHeader :any | string = req.headers.authorization;
+        const authHeader = req.headers.authorization as string;
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
             res
               .status(401)
@@ -20,10 +20,15 @@ export function userMiddleware(req : Request,res : Response,next : NextFunction)
         }
         const token=authHeader.split(" ")[1];
         const decoded=jwt.verify(token,JWT_Secret) as JwtPayload;
-        req.userId=decoded.id;
-        next();
+        if(decoded){
+            req.userId=decoded.id;
+            next();
+        }
+        else{
+            res.json(403).json({message : 'Invalid Token.'})
+        }
     } catch (error : any) {
-        res.status(401).json({ message: "Invalid Credentials." });
+        res.status(403).json({ message: "Invalid Token." });
     }
 }
 

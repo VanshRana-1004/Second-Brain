@@ -1,16 +1,22 @@
 import express from "express";
+import * as dotenv from 'dotenv';
+dotenv.config();
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import z from "zod";
+import z,{any} from "zod";
 import {userModel,contentModel,tagsModel,linkModel} from "./db";
-import bcrypt from "bcrypt";
-import {JWT_Secret,mongodbUrl}  from "./config";
+
 import { userMiddleware } from "./middleware";
+import bcrypt from "bcrypt";
 import cors from "cors";
-import { ObjectId } from "mongoose";
+
 import { random } from "./util";
 import { Request, Response } from 'express';
-const PORT = process.env.PORT || 3000;
+
+const JWT_Secret=process.env.JWT_Secret || 'random';
+const mongodbUrl=process.env.mongodbUrl || 'random';
+const PORT = process.env.PORT;
+
 const app=express();
 app.use(express.json());
 app.use(cors());
@@ -220,7 +226,7 @@ app.post('/api/v1/content',async (req : Request,res : Response)=>{
             userId: req.userId,
             date: date
         })
-        const contentId=await contentModel.findOne({title:title}).select('_id');
+        const contentId : any | null=await contentModel.findOne({title:title}).select('_id');
         if(contentId){
             for(let i=0;i<tags.length;i++){
                 const response=await tagsModel.findOne({
@@ -325,4 +331,5 @@ async function main(){
     app.listen(PORT);
 }
     
+
 main();

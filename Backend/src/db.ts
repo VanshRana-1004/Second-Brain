@@ -1,33 +1,34 @@
-import mongoose from "mongoose";
-import {Schema,model} from "mongoose";
-import {ObjectId} from "mongoose";
+import mongoose,{  Types } from "mongoose";
 
-
-const userSchema = new Schema({
-    "username": { type: String, unique :true},
-    "password": { type: String }
+const userSchema = new mongoose.Schema({
+  username: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
 });
-export const userModel = model('User',userSchema);
 
-const contentSchema=new Schema({
-    title: String,
-    link: String,
-    description : String,
-    tags: [],
-    date: String,
-    userId:{type:mongoose.Types.ObjectId, ref: 'User', required:true}
-})
-export const contentModel=model('Content',contentSchema);
+export const userModel = mongoose.model('User', userSchema);
 
-const tagsSchema=new Schema({
-    tag : String,
-    contentId:[{type: mongoose.Types.ObjectId,ref:'Content'}],
-})
-export const tagsModel=model('Tags',tagsSchema);
+const contentSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  link: { type: String, required: true },
+  description: { type: String, required: true },
+  tags: [{ type: Types.ObjectId, ref: 'Tags' }],
+  date: { type: String, required: true },
+  userId: { type: Types.ObjectId, ref: 'User', required: true },
+});
 
-const linkSchema=new Schema({
-    hash:{type:String,required:true},
-    userId:{type:mongoose.Types.ObjectId,ref:'User',required:true},
-    enabled:{type:Boolean}
-})
-export const linkModel=model('Link',linkSchema);
+export const contentModel = mongoose.model('Content', contentSchema);
+
+const tagsSchema = new mongoose.Schema({
+  tag: { type: String, unique: true, required: true },
+  contentId: [{ type: Types.ObjectId, ref: 'Content' }],
+});
+
+export const tagsModel = mongoose.model('Tags', tagsSchema);
+
+const linkSchema = new mongoose.Schema({
+  hash: { type: String, unique: true, required: true },
+  userId: { type: Types.ObjectId, ref: 'User', required: true },
+  enabled: { type: Boolean},
+});
+
+export const linkModel = mongoose.model('Link', linkSchema);
