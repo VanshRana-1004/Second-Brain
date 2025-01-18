@@ -7,7 +7,9 @@ interface params{
     setContentPage : (contentPage : boolean)=>void,
     setWelcomePage : (welcomePage : boolean)=>void,
     share : boolean,
-    size:number
+    size:number,
+    showMenu : boolean,
+    setShowMenu : (setMenu : boolean)=>void
 }
 export function Header(props : params){
     function logout(){
@@ -27,11 +29,14 @@ export function Header(props : params){
         const newUrl = frontEndUrl; 
         window.open(newUrl, '_blank'); 
     }
+    function sideBar(){
+        props.setShowMenu(!props.showMenu);
+    }
     return <>
         <ToastContainer/>
         <div className={` w-full flex justify-between items-center border-b-2 border-b-gray-700  pl-16 pr-10 bg-black ${props.size<=768?'pr-2 pl-2':''} ${props.size==380?'pl-12 justify-between gap-0 pr-0':''}`}>
             <TitleLogo size={props.size}/>
-            {props.size<=768?<Button variant={"logout"} size={"sm"} text={"Menu"} onClick={()=>{}}/>:<></>}
+            {props.size<500?<Button variant={"logout"} size={"sm"} text={"Menu"} onClick={sideBar}/>:<></>}
             {!props.share?<Button startIcon={props.size<=768?<></>:<Logout/>} variant={"logout"}  size={"sm"} text={"logout"} onClick={logout} />:
             <Button variant={"shared"} size={"lg"} text={"Visit Site"} onClick={welcomePage}/>}
         </div>

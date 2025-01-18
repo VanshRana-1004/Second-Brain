@@ -76,7 +76,7 @@ export function Copylink(props : params){
     const style=`text-md text-blue-500 hover:underline cursor-pointer`
     return <>
             <ToastContainer/>
-            <div className={`z-50 bg-black border shadow-gray-500 shadow-md rounded-xl h-1/4 w-1/2 flex flex-col pt-1 px-1 pb-2 absolute overflow-visible  items-center justify-around left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ${props.size<=768?'w-5/6 h-1/5 ml-5':''}  `}>
+            <div className={`z-50 bg-black border shadow-gray-500 shadow-md rounded-xl h-1/4 w-1/2 flex flex-col pt-1 px-1 pb-2 absolute overflow-visible  items-center justify-around left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ${props.size<=768?'w-5/6 h-1/5 mx-auto':''}  `}>
                 
                 <div className="w-full flex items-baseline justify-end">
                     <div className="rounded-2xl hover:bg-gray-800 cursor-pointer" onClick={()=>props.setShowLink(false)}><Cross/></div>

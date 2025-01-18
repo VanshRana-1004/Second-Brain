@@ -207,6 +207,7 @@ const requireInputFields=z.object({
 
 app.post('/api/v1/content',async (req : Request,res : Response)=>{
     console.log('request came to add content')
+    console.log(req.body);
     const parseData=requireInputFields.safeParse(req.body);
     if(parseData.success){
         const link= req.body.link;

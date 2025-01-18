@@ -12,12 +12,14 @@ interface params{
     hash : string,
     showContent : boolean,
     setShowContent : (showContent : boolean)=>void,
-    size : number
+    size : number,
+    showMenu : boolean,
+    setShowMenu : (showMenu : boolean)=>void
 }
 export function Content(props : params){
     return<>
         <div className={`${props.showInput?'opacity-10':'opacity-100'} flex flex-col w-full h-screen top-0 absolute transition-all duration-200 ease-in-out`}>
-            <Header setContentPage={props.setContentPage} setWelcomePage={props.setWelcomePage} share={props.share} size={props.size}/> 
+            <Header setContentPage={props.setContentPage} setWelcomePage={props.setWelcomePage} share={props.share} size={props.size} showMenu={props.showMenu} setShowMenu={props.setShowMenu}/> 
             <Data contentType={props.contentType} showInput={props.showInput} onClick={props.onClick} share={props.share} setShowLink={props.setShowLink} hash={props.hash} showContent={props.showContent} setShowContent={props.setShowContent} size={props.size}/>
         </div>
     </> 

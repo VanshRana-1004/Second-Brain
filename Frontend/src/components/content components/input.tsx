@@ -58,6 +58,7 @@ export function Input(props : params1){
         try{
             const token = localStorage.getItem('authToken');
             console.log(token);
+            console.log(data);
             let response=await axios.post(`${apiUrl}/api/v1/content`,data,{
                 headers:{
                     Authorization:`Bearer ${token}`

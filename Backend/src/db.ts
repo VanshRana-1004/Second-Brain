@@ -11,7 +11,7 @@ const contentSchema = new mongoose.Schema({
   title: { type: String, required: true },
   link: { type: String, required: true },
   description: { type: String, required: true },
-  tags: [{ type: Types.ObjectId, ref: 'Tags' }],
+  tags: [{ type: String, ref: 'Tags' }],
   date: { type: String, required: true },
   userId: { type: Types.ObjectId, ref: 'User', required: true },
 });
