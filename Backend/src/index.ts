@@ -8,7 +8,7 @@ import {userModel,contentModel,tagsModel,linkModel} from "./db";
 
 import { userMiddleware } from "./middleware";
 import bcrypt from "bcrypt";
-import cors from "cors";
+
 
 import { random } from "./util";
 import { Request, Response } from 'express';
@@ -19,7 +19,14 @@ const PORT = process.env.PORT;
 
 const app=express();
 app.use(express.json());
-app.use(cors());
+import cors from "cors";
+const corsOptions = {
+    origin: "*", // Allow all origins. Change "*" to a specific domain if needed, e.g., 'http://example.com'
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+    credentials: true, // Include credentials like cookies or authorization headers
+};
+app.use(cors(corsOptions));
 
 
 const requireInput=z.object({

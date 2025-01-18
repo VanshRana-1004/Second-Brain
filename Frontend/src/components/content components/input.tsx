@@ -54,14 +54,16 @@ export function Input(props : params1){
         handleTags();
         const date : string =(new Date()).toISOString().split('T')[0];
         const data : params={title,description,link,allTags,date};
-        
+        console.log('Request for adding content');
         try{
             const token = localStorage.getItem('authToken');
+            console.log(token);
             let response=await axios.post(`${apiUrl}/api/v1/content`,data,{
                 headers:{
                     Authorization:`Bearer ${token}`
                 }
             });
+            console.log(response);
             setTitle('');
             setDescription('');
             setLink('');
@@ -77,6 +79,7 @@ export function Input(props : params1){
                 autoClose: 2000,
             })
         }catch(e){
+            console.log(e);
             toast.warning('Required fields are missing',{
                 position: "top-center",
                 className: "absolute ",
