@@ -55,7 +55,7 @@ export function Welcome(props : params){
                         <p>- Easy Access, and</p>
                         <p>- Share Your Brain effortlessly!</p>
                     </div>
-                    <div className="mt-30 justify-self-end self-center"><Button variant={"getStarted"} text={"Get Started"} onClick={()=>{props.setLogPage(true),props.setWelcomePage(false),props.setUp(false)}} /></div>
+                    <div className="mt-30 justify-self-end self-center"><Button variant={"getStarted"} text={"Get Started"} onClick={()=>{props.setLogPage(true),props.setWelcomePage(false),props.setUp(true)}} /></div>
                 </div>
             </div>
 }

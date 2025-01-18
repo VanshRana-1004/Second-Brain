@@ -18,11 +18,6 @@ interface pageParams{
 
 export function Page(props : pageParams) {
 
-  const location = useLocation();
-  useEffect(() => {
-    localStorage.setItem("lastPath", location.pathname);
-  }, [location]);
-
   const getStoredPageState = () => {
     const savedState = localStorage.getItem('pageState');
     return savedState ? JSON.parse(savedState) : { welcomePage: true, logPage: false, contentPage: false, up: false };
