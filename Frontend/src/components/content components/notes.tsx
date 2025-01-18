@@ -10,7 +10,7 @@ interface params{
 }
 export function Notes(props : params){
     const heading=props.contentType;
-    return <div className={`mx-10 flex items-center justify-between  py-2 ${props.size<=768?'py-0.7 px-2':'px-16'} h-auto bg-black rounded-full border border-gray-900 shadow shadow-gray-800 `}>
+    return <div className={`mx-10 flex items-center justify-between  ${props.size<=768?'py-1 px-2  mx-0':'p-10 py-2'} h-auto bg-black rounded-full border border-gray-900 shadow shadow-gray-800 `}>
         <div className={`font-bold font-custom text-3xl  ${props.size==768?'text-2xl':''} ${props.size<=500?'text-xl':''} ${props.size==380?'text-lg':''}  text-white`}>
             {heading=='home' && 'All Notes'}
             {heading=='twitter' && 'Tweets'}

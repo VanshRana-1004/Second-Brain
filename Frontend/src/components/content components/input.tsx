@@ -80,7 +80,7 @@ export function Input(props : params1){
             })
         }catch(e){
             console.log(e);
-            toast.warning('Required fields are missing',{
+            toast.error('Request Failed to add content.',{
                 position: "top-center",
                 className: "absolute ",
                 autoClose: 2000,

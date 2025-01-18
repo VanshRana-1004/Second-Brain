@@ -19,6 +19,15 @@ const PORT = process.env.PORT;
 
 const app=express();
 app.use(express.json());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", PORT);
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    next();
+  });
 import cors from "cors";
 const corsOptions = {
     origin: "*", // Allow all origins. Change "*" to a specific domain if needed, e.g., 'http://example.com'
@@ -143,13 +152,6 @@ app.get('/api/v1/brain/',async (req : Request,res : Response)=>{
     }
 })
 
-const requireInputFields=z.object({
-    link:z.string().min(1),
-    title:z.string().min(1),
-    description:z.string().min(1),
-    tags:z.array(z.string()).optional(),
-    date:z.string().min(1)
-})
 
 app.use(userMiddleware);
 
@@ -210,6 +212,14 @@ app.post("/api/v1/brain/share",async(req : Request,res : Response)=>{
             return 
         }
     }
+})
+
+const requireInputFields=z.object({
+    link:z.string().min(1),
+    title:z.string().min(1),
+    description:z.string().min(1),
+    tags:z.array(z.string()).optional(),
+    date:z.string().min(1)
 })
 
 app.post('/api/v1/content',async (req : Request,res : Response)=>{
