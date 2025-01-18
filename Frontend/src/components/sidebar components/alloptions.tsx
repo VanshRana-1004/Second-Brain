@@ -7,6 +7,7 @@ import { YouTubeIcon } from "../../icons/youtubeicon"
 import { HamburgerIcon } from "../../icons/hamburgericon"
 import { Notion } from "../../icons/notionicon"
 import { InstaIcon } from "../../icons/instaicon"
+import { toast,ToastContainer } from "react-toastify"
 
 interface AllOptionsProps {
     setContentType:(contentType : string)=>void, 
@@ -19,8 +20,23 @@ interface AllOptionsProps {
 }
 
 export function AllOptions( props : AllOptionsProps){
-    function Display(tag : string){
-        props.setContentType(tag);
+    async function Display(tag : string){
+        try{
+            props.setContentType(tag)
+            setTimeout(()=>{
+                toast.success('Required Data Fetched Successfully!',{
+                    position: "top-center",
+                    className: "absolute ",
+                    autoClose:1000
+                })
+            },2000);
+        }catch(e){
+            toast.error('Error in fetching data.',{
+                position: "top-center",
+                className: "absolute ",
+                autoClose:1000
+            })
+        }        
     }
     function menu(){
         if(props.size>=768) props.setIcon(!props.icon)

@@ -74,11 +74,6 @@ export function Input(props : params1){
                 tagsRef[i][1](false);
             }
             props.onClick();
-            toast.loading('Adding content...',{
-                position: "top-center",
-                className: "absolute ",
-                autoClose: 2000,
-            })
         }catch(e){
             console.log(e);
             toast.error('Request Failed to add content.',{
