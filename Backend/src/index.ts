@@ -226,7 +226,7 @@ app.post('/api/v1/content',async (req : Request,res : Response)=>{
             userId: req.userId,
             date: date
         })
-        const contentId : any | null=await contentModel.findOne({title:title}).select('_id');
+        const contentId=await contentModel.findOne({title:title}).select('_id');
         if(contentId){
             for(let i=0;i<tags.length;i++){
                 const response=await tagsModel.findOne({
