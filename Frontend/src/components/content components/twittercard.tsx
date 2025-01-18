@@ -6,10 +6,6 @@ declare global {
   }
 }
 
-interface Props {
-  tweetUrl: string;
-}
-
 const loadTwitterScript = () => {
   if (!document.getElementById("twitter-wjs")) {
     const script = document.createElement("script");
@@ -26,9 +22,7 @@ interface params{
 }
 export function TwitterCard(props : params){
   useEffect(() => {
-    loadTwitterScript(); // Load the Twitter script dynamically
-
-    // Ensure the Twitter widgets are loaded/rendered
+    loadTwitterScript(); 
     const checkAndLoadWidgets = () => {
       if (window.twttr && window.twttr.widgets) {
         window.twttr.widgets.load();

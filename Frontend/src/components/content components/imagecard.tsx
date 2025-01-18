@@ -25,7 +25,9 @@ export function ImageCard(props : params2){
                 </div>)
             }
             else if(props.link.startsWith("https://www.instagram.com/")){
-                setElement(<TwitterCard url={props.link}/>)
+                const url=props.link;
+                const correctedUrl = url.replace("x.com", "twitter.com");
+                setElement(<TwitterCard url={correctedUrl}/>)
             }
             else if(imageExtensions.test(props.link) || props.link.startsWith("data:image/jpeg;base64,")){
                 setElement(<img src={props.link} alt="default" className={style}/>)
