@@ -35,9 +35,9 @@ export function SideBarContent(props : params){
         <div className={`flex h-full w-full`}>
         {showContent?
             <div className={`flex h-full w-full relative `}>
-            {showInput?<Input showInput={showInput} onClick={()=>setShowInput(false)}/>:''}  
+            {showInput?<Input showInput={showInput} onClick={()=>setShowInput(false)} size={props.size}/>:''}  
             {showLink?<Copylink setShowLink={setShowLink} size={props.size}/>:''}
-            <Sidebar contentType={contentType} setContentType={setContentType} showInput={showInput} showSideBar={showSideBar} setShowSideBar={setShowSideBar} size={props.size}/>
+            {props.size>=768?<Sidebar contentType={contentType} setContentType={setContentType} showInput={showInput} showSideBar={showSideBar} setShowSideBar={setShowSideBar} size={props.size}/>:<></>}
             <Content contentType={contentType} showInput={showInput} onClick={()=>setShowInput(true)} setContentPage={props.setContentPage} setWelcomePage={props.setWelcomePage} share={props.share} setShare={props.setShare} setShowLink={setShowLink} hash={props.hash} showContent={showContent} setShowContent={setShowContent} size={props.size}/>
             </div>:
             <img src="invalidlink.png" alt="Invalid link" className="-translate-y-5 m-auto h-full shadow-black"/>

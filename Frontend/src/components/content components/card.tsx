@@ -57,7 +57,7 @@ export function MainCard(props : params1){
     else if(props.size>=768) style='grid-cols-2';
     else style='grid-cols-1'
     return<>
-        <div className={`relative overflow-x-auto overflow-y-auto gap-10 py-10 px-5 grid  ${style}`}>
+        <div className={`relative overflow-x-auto overflow-y-auto gap-10 py-10 px-5 grid ${props.size<=768?'px-3':''} ${style}`}>
             {Array(response.length).fill(0).map((x,index)=>(<Card key={index} title={response[index].title} description={response[index].description} link={response[index].link} tags={response[index].tags} date={response[index].date} _id={response[index]._id} deleteRender={deleteRender} setDeleteRender={setDeleteRender} share={props.share} size={props.size}/>))}
         </div>
     </>

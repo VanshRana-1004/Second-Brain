@@ -26,7 +26,7 @@ const requireInput=z.object({
     username:z.string().min(1),
     password:z.string().min(1)
 })
-app.post('/api/v1/signup',async (req : Request,res : Response)=>{   
+app.post('/api/v1/signup',async (req : Request,res : Response)=>{ 
     const parseData=requireInput.safeParse(req.body);
     if(parseData.success){
         const username=parseData.data.username;
@@ -206,6 +206,7 @@ app.post("/api/v1/brain/share",async(req : Request,res : Response)=>{
 })
 
 app.post('/api/v1/content',async (req : Request,res : Response)=>{
+    console.log('request came to add content')
     const parseData=requireInputFields.safeParse(req.body);
     if(parseData.success){
         const link= req.body.link;

@@ -52,9 +52,9 @@ export function Page(props : pageParams) {
     <div className="h-screen w-screen  flex bg-black">
     {loader && !contentPage ?<div className="h-full w-full  flex bg-black"><Loader loading={true}/></div>:
     <div className="h-screen w-screen bg-[url(https://marketplace.canva.com/NxUJE/MADyQ4NxUJE/1/s2/canva-dark-starry-sky-MADyQ4NxUJE.jpg)] flex">
-        {welcomePage && <Welcome setLogPage={setLogPage} setWelcomePage={setWelcomePage} setUp={setUp} size={props.size} />}
-        {logPage && <SignUp_Login up={up} setUp={setUp} setWelcomePage={setWelcomePage} setLogPage={setLogPage} setContentPage={setContentPage} size={props.size}/>}
-        {contentPage && <SideBarContent setContentPage={setContentPage} setWelcomePage={setWelcomePage} share={false} setShare={()=>{}} hash={''} size={props.size}/>}
+        {welcomePage && logPage==false && contentPage==false && <Welcome setLogPage={setLogPage} setWelcomePage={setWelcomePage} setUp={setUp} size={props.size} />}
+        {logPage && welcomePage==false && contentPage==false && <SignUp_Login up={up} setUp={setUp} setWelcomePage={setWelcomePage} setLogPage={setLogPage} setContentPage={setContentPage} size={props.size}/>}
+        {contentPage && logPage==false && welcomePage==false && <SideBarContent setContentPage={setContentPage} setWelcomePage={setWelcomePage} share={false} setShare={()=>{}} hash={''} size={props.size}/>}
     </div>}
     </div>
   );

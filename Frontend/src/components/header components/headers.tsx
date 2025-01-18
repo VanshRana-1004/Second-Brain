@@ -29,9 +29,10 @@ export function Header(props : params){
     }
     return <>
         <ToastContainer/>
-        <div className={` w-full flex justify-between items-center border-b-2 border-b-gray-700  pl-16 pr-10 bg-black ${props.size<768?'pr-2':''} ${props.size==380?'pl-12 justify-between gap-0 pr-0':''}`}>
+        <div className={` w-full flex justify-between items-center border-b-2 border-b-gray-700  pl-16 pr-10 bg-black ${props.size<=768?'pr-2 pl-2':''} ${props.size==380?'pl-12 justify-between gap-0 pr-0':''}`}>
             <TitleLogo size={props.size}/>
-            {!props.share?<Button startIcon={props.size<=768?<></>:<Logout/>} variant={"logout"}  size={"lg"} text={"logout"} onClick={logout} />:
+            {props.size<=768?<Button variant={"logout"} size={"sm"} text={"Menu"} onClick={()=>{}}/>:<></>}
+            {!props.share?<Button startIcon={props.size<=768?<></>:<Logout/>} variant={"logout"}  size={"sm"} text={"logout"} onClick={logout} />:
             <Button variant={"shared"} size={"lg"} text={"Visit Site"} onClick={welcomePage}/>}
         </div>
     </>

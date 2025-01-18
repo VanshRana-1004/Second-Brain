@@ -31,4 +31,3 @@ export function userMiddleware(req : Request,res : Response,next : NextFunction)
         res.status(403).json({ message: "Invalid Token." });
     }
 }
-

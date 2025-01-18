@@ -12,11 +12,13 @@ interface params{
     description: string,
     link: string,
     allTags: string[],
-    date: string
+    date: string,
 }
 interface params1{
     showInput : boolean
-    onClick : ()=>void
+    onClick : ()=>void,
+    size : number
+
 }
 export function Input(props : params1){
     const [title,setTitle]=useState('');
@@ -68,14 +70,12 @@ export function Input(props : params1){
             for(let i=0;i<tagsArr.length;i++){
                 tagsRef[i][1](false);
             }
+            props.onClick();
             toast.loading('Adding content...',{
                 position: "top-center",
                 className: "absolute ",
                 autoClose: 2000,
             })
-            setTimeout(async ()=>{  
-                props.onClick();
-            },2000); 
         }catch(e){
             toast.warning('Required fields are missing',{
                 position: "top-center",
@@ -90,7 +90,7 @@ export function Input(props : params1){
     const InputStyle=`w-full h-10 rounded-xl outline-none border border-gray-300 shadow-sm text-gray-300  text-md`
     return <>
         <ToastContainer/>
-        <div className={`z-50 bg-black border shadow-gray-500 shadow-md rounded-md h-3/4 w-96 flex flex-col pt-1 px-1 pb-2 items-center absolute overflow-visible left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 `}>
+        <div className={`z-50 bg-black border shadow-gray-500 shadow-md rounded-md h-3/4  flex flex-col pt-1 px-1 pb-2 items-center absolute overflow-visible left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ${props.size<=768?'w-80':'w-96'} `}>
         <div className="w-full flex items-baseline justify-end">
             <div className="rounded-2xl hover:bg-gray-800 cursor-pointer" onClick={props.onClick}><Cross/></div>
         </div>
