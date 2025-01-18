@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { YouTubeEmbed,TwitterEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
+import { YouTubeEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
 import {TwitterCard} from "./twittercard"
 
 interface params2{

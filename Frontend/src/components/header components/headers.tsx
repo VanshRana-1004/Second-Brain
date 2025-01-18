@@ -2,7 +2,7 @@ import { TitleLogo } from "../sidebar components/titlelogo"
 import { Button } from "./buttons"
 import { Logout } from "../../icons/logouticon"
 import {toast,ToastContainer} from 'react-toastify';
-const frontEndUrl='ttps://secondbrain-app.vercel.app/';
+const frontEndUrl='https://secondbrain-app.vercel.app/';
 interface params{
     setContentPage : (contentPage : boolean)=>void,
     setWelcomePage : (welcomePage : boolean)=>void,
