@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { YouTubeEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
+import { YouTubeEmbed,TwitterEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
+import {TwitterCard} from "./twittercard"
 
 interface params2{
     link : string
@@ -18,15 +19,13 @@ export function ImageCard(props : params2){
                     <YouTubeEmbed url={props.link} height={"250px"} width={"283px"} />
                 </div>)
             }
-            else if(props.link.startsWith("https://x.com/") || props.link.startsWith("https://twitter.com/")){
+            else if(props.link.startsWith("https://x.com/")){
                 setElement(<div className={style}>
                     <XEmbed url={props.link} />
                 </div>)
             }
             else if(props.link.startsWith("https://www.instagram.com/")){
-                setElement(<div className={style}>
-                    <InstagramEmbed url={props.link}/>
-                </div>)
+                setElement(<TwitterCard url={props.link}/>)
             }
             else if(imageExtensions.test(props.link) || props.link.startsWith("data:image/jpeg;base64,")){
                 setElement(<img src={props.link} alt="default" className={style}/>)
