@@ -19,8 +19,8 @@ const PORT = process.env.PORT;
 
 const app=express();
 app.use(express.json());
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", PORT);
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
     res.header(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
@@ -30,12 +30,12 @@ app.use(function(req, res, next) {
   });
 import cors from "cors";
 const corsOptions = {
-    origin: "*", // Allow all origins. Change "*" to a specific domain if needed, e.g., 'http://example.com'
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
-    credentials: true, // Include credentials like cookies or authorization headers
-};
-app.use(cors(corsOptions));
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  };
+  app.use(cors(corsOptions));
 
 
 const requireInput=z.object({
