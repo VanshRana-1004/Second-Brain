@@ -30,7 +30,6 @@ export function TwitterCard(props : params){
         setTimeout(checkAndLoadWidgets, 200);
       }
     };
-
     checkAndLoadWidgets();
   }, [props.url]);
 

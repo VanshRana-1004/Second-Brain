@@ -20,14 +20,16 @@ export function ImageCard(props : params2){
                 </div>)
             }
             else if(props.link.startsWith("https://x.com/")){
+                const url=props.link;
+                const correctedUrl = url.replace("x.com", "twitter.com");
                 setElement(<div className={style}>
-                    <XEmbed url={props.link} />
+                    <TwitterCard url={correctedUrl}/>
                 </div>)
             }
             else if(props.link.startsWith("https://www.instagram.com/")){
-                const url=props.link;
-                const correctedUrl = url.replace("x.com", "twitter.com");
-                setElement(<TwitterCard url={correctedUrl}/>)
+                setElement(<div className={style}>
+                    <InstagramEmbed url={props.link} />
+                </div>)
             }
             else if(imageExtensions.test(props.link) || props.link.startsWith("data:image/jpeg;base64,")){
                 setElement(<img src={props.link} alt="default" className={style}/>)
