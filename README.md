@@ -3,17 +3,17 @@ A ReactJS + TypeScript project serving as your second brain to store important l
 
 
 # Features 🚀
-<b>+ Content Storage : </b>Save and organize important links in one place for easy access.
+- <b> Content Storage : </b>Save and organize important links in one place for easy access.
 
-<b>+ Quick Access : </b>Easily retrieve stored content whenever needed without hassle.
+- <b> Quick Access : </b>Easily retrieve stored content whenever needed without hassle.
 
-<b>+ Tag-Based Organization : </b>Filter content based on defined tags for better organization.
+- <b> Tag-Based Organization : </b>Filter content based on defined tags for better organization.
 
-<b>+ Sharing Functionality : </b>Share your stored links and media with others through a unique link.
+- <b> Sharing Functionality : </b>Share your stored links and media with others through a unique link.
 
-<b>+ Privacy Control : </b>Disable sharing anytime to ensure your content stays private.
+- <b> Privacy Control : </b>Disable sharing anytime to ensure your content stays private.
 
-<b>+ Responsive Design : </b>Enjoy a seamless experience on both desktop and mobile devices.
+- <b> Responsive Design : </b>Enjoy a seamless experience on both desktop and mobile devices.
 
-<b>+ User-Friendly Interface : </b>Navigate effortlessly with a clean and intuitive design.
+- <b> User-Friendly Interface : </b>Navigate effortlessly with a clean and intuitive design.
 
