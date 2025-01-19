@@ -20,23 +20,23 @@ A ReactJS + TypeScript project serving as your second brain to store important l
 
 # Tech Stack 🛠️
 
-<B>Frontend</B>
+ <b>Frontend</b>
 
-    - <b>Framework : </b>React with TypeScript
-    
-    - <b>Styling : </b>Tailwind CSS
-    
-    - <b>State Management : </b>Axios library and local storage
-    
-    - <b>Build Tool : </b>Vite
+  - <b>Framework : </b>React with TypeScript
 
-<B>Backend</B>
+  - <b>Styling : </b>Tailwind CSS
+    
+  - <b>State Management : </b>Axios library and local storage
+    
+  - <b>Build Tool : </b>Vite
 
-    - <b>Framework : </b>Node.js with Express
+ <b>Backend</b>
+
+  - <b>Framework : </b>Node.js with Express
     
-    - <b>Database : </b>MongoDB for data storage
+  - <b>Database : </b>MongoDB for data storage
     
-    - <b>Authentication : </b>JWT (JSON Web Tokens)
+  - <b>Authentication : </b>JWT (JSON Web Tokens)
 
 
 # Visit Website 🔗 
