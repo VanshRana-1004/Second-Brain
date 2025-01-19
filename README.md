@@ -63,7 +63,7 @@ secondbrainapp/
 
 1. <b>Clone the repository :</b>
 ```
- git clone [https://github.com/Vansh-Rana-1004/secondbrain.git](https://github.com/VanshRana-1004/Second-Brain.git)
+ git clone https://github.com/VanshRana-1004/Second-Brain.git
  cd BrainDock
 ```
 
