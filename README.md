@@ -17,3 +17,22 @@ A ReactJS + TypeScript project serving as your second brain to store important l
 
 - <b> User-Friendly Interface : </b>Navigate effortlessly with a clean and intuitive design.
 
+
+# Tech Stack 🛠️
+
+<B>Frontend</B>
+    - <b>Framework : </b>React with TypeScript
+    - <b>Styling : </b>Tailwind CSS
+    - <b>State Management : </b>Axios library and local storage
+    - <b>Build Tool : </b>Vite
+
+<B>Backend</B>
+    - <b>Framework : </b>Node.js with Express
+    - <b>Database : </b>MongoDB for data storage
+    - <b>Authentication : </b>JWT (JSON Web Tokens)
+
+
+# Visit Website 🔗 
+
+- [Second Brain]([https://yourlink.com](https://secondbrain-app.vercel.app/)
+
