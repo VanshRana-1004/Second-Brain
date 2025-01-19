@@ -38,7 +38,7 @@ export function Header(props : params){
             <TitleLogo size={props.size}/>
             {props.size<500?<Button variant={"logout"} size={"sm"} text={"Menu"} onClick={sideBar}/>:<></>}
             {!props.share?<Button startIcon={props.size<=768?<></>:<Logout/>} variant={"logout"}  size={"sm"} text={"logout"} onClick={logout} />:
-            <Button variant={"shared"} size={"lg"} text={"Visit Site"} onClick={welcomePage}/>}
+            <Button variant={"shared"} size={"lg"} text={props.size<=500?"Site":"Visit Site"} onClick={welcomePage}/>}
         </div>
     </>
         
