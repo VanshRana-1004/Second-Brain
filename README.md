@@ -43,3 +43,26 @@ A ReactJS + TypeScript project serving as your second brain to store important l
 
 - [Second Brain](https://secondbrain-app.vercel.app/)
 
+
+# Folder Structure 🏗️
+
+```
+secondbrainapp/
+├── Backend/          # Contains the server-side code
+│   ├── src/          # Backend source files
+│   ├── .env          # Environment variables for the backend
+│   └── package.json
+├── Frontend/         # Contains the client-side code
+│   ├── src/          # Frontend source files
+│   ├── public/       # Public assets like logos
+│   └── package.json
+└── README.md         # Project documentation
+```
+
+#  Installation and Setup ⚙️
+
+1. <b>Clone the repository :</b>
+```
+ git clone https://github.com/Vansh-Rana-1004/secondbrain.git
+ cd BrainDock
+```
