@@ -99,6 +99,10 @@ secondbrainapp/
 - <b>Explore Shared Brains : </b>Discover resources shared by other users.
 
 
+# License 📜
+- This project is licensed under the MIT License.
+
+
 # Author 🧑‍💻
 - Vansh Rana
 - [Github Link](https://github.com/VanshRana-1004)
