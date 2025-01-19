@@ -93,3 +93,15 @@ secondbrainapp/
     ```
     VITE_API_URL=<backend-api-url>
     ```
+
+# Key Functionalities ✨
+- <b>Save and Categorize : </b>Keep your links organized by categories or tags.
+- <b>Explore Shared Brains : </b>Discover resources shared by other users.
+
+
+# Author 🧑‍💻
+- Vansh Rana
+- [Github Link](https://github.com/VanshRana-1004)
+
+
+Let me know if you'd like further refinements!
