@@ -63,6 +63,33 @@ secondbrainapp/
 
 1. <b>Clone the repository :</b>
 ```
- git clone https://github.com/Vansh-Rana-1004/secondbrain.git
+ git clone [https://github.com/Vansh-Rana-1004/secondbrain.git](https://github.com/VanshRana-1004/Second-Brain.git)
  cd BrainDock
 ```
+
+2. <b>Setup Backend :</b>
+```
+ cd Backend
+ npm install
+ npm run dev
+```
+
+3. <b>Setup Frontend :</b>
+```
+ cd ../Frontend
+ npm install
+ npm run dev
+```
+
+4. <b>Environment Variables :</b>
+- Create ```.env``` files in the respective folders with the following:
+  - Backend ```.env```
+    ```
+    PORT=3000
+    MONGO_URI=<your-mongodb-uri>
+    JWT_SECRET=<your-secret-key>
+    ```
+  - Frontend ```.env```
+    ```
+    VITE_API_URL=<backend-api-url>
+    ```
