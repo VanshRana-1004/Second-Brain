@@ -34,5 +34,5 @@ A ReactJS + TypeScript project serving as your second brain to store important l
 
 # Visit Website 🔗 
 
-- [Second Brain]([https://yourlink.com](https://secondbrain-app.vercel.app/)
+- [Second Brain](https://secondbrain-app.vercel.app/)
 
