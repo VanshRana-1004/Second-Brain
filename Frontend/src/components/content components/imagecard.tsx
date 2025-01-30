@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { YouTubeEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
-import {TwitterCard} from "./twittercard"
-import captureWebsite from 'capture-website';
+import {TwitterCard} from "./twittercard";
+import html2canvas from "html2canvas";
 
 interface params2{
     link : string
@@ -46,18 +46,22 @@ export function ImageCard(props : params2){
                 setElement(<img src={"https://i0.wp.com/iamsteve.in/wp-content/uploads/2020/11/notion-logo.png?ssl=1"} className={style}/>)
             }
             else if(props.link.startsWith("https://")){
-                async function capture() {
-                    try {
-                        const buffer = await captureWebsite.buffer(props.link);
-                        const blob = new Blob([buffer], { type: "image/png" });
-                        const url = URL.createObjectURL(blob);
-                        setElement(<img src={url} className="your-css-class" alt="Screenshot" />);
-                    } catch (error) {
-                        console.error("Error capturing website:", error);
-                        setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style}/>);
-                    }
+                const captureRef = useRef(null);
+                const [imageUrl, setImageUrl] = useState("");
+
+                const captureScreenshot = async () => {
+                    if (!captureRef.current) return;
+                    const canvas = await html2canvas(captureRef.current);
+                    const dataUrl = canvas.toDataURL("image/png");
+                    setImageUrl(dataUrl);
+                };
+                captureScreenshot();
+                try{
+                    setElement(<img src={imageUrl} className={style}/>)
                 }
-                capture();
+                catch(e){
+                    setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style}/>)
+                }
             }
             else{
                 setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style}/>)
