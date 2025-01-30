@@ -1,7 +1,6 @@
-import { useEffect, useState,useRef } from "react";
-import { YouTubeEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
+import { useEffect, useState } from "react";
+import { YouTubeEmbed,InstagramEmbed } from "react-social-media-embed";
 import {TwitterCard} from "./twittercard";
-import html2canvas from "html2canvas";
 
 interface params2{
     link : string
@@ -39,25 +38,16 @@ export function ImageCard(props : params2){
             else if(props.link.startsWith("https://www.google.com/")){
                 setElement(<img src={"https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2024/8/23/wired-uk-google-watching-1724377409027-17243774094672016963639.jpg"} className={style}/>)
             }
-            else if(props.link.startsWith("https://www.linkedin.com/")){
-                setElement(<img src={"https://images.unsplash.com/photo-1704382002666-5dc4fbb522c0?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bGlua2VkaW58ZW58MHx8MHx8fDA%3D"} className={style}/>)
-            }
             else if(props.link.startsWith("https://www.notion.so/")){
                 setElement(<img src={"https://i0.wp.com/iamsteve.in/wp-content/uploads/2020/11/notion-logo.png?ssl=1"} className={style}/>)
             }
-            else if(props.link.startsWith("https://")){
-                const captureRef = useRef(null);
-                const [imageUrl, setImageUrl] = useState("");
-
-                const captureScreenshot = async () => {
-                    if (!captureRef.current) return;
-                    const canvas = await html2canvas(captureRef.current);
-                    const dataUrl = canvas.toDataURL("image/png");
-                    setImageUrl(dataUrl);
-                };
-                captureScreenshot();
+            else if(props.link.startsWith("https://") || props.link.startsWith("https://www.linkedin.com/")){
                 try{
-                    setElement(<img src={imageUrl} className={style}/>)
+                    console.log(`//image.thum.io/get/${props.link}`)
+                    setElement(<img src={`//image.thum.io/get/${props.link}`} className={`${style}`}/>)
+                    if(props.link=='https://secondbrain-app.vercel.app/'){
+                        setElement(<img src={'landing.png'} className={`${style}  w-full h-full`}/>)
+                    }
                 }
                 catch(e){
                     setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style}/>)
