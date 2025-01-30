@@ -43,7 +43,6 @@ export function ImageCard(props : params2){
             }
             else if(props.link.startsWith("https://") || props.link.startsWith("https://www.linkedin.com/")){
                 try{
-                    console.log(`//image.thum.io/get/${props.link}`)
                     setElement(<img src={`//image.thum.io/get/${props.link}`} className={`${style}`}/>)
                     if(props.link=='https://secondbrain-app.vercel.app/'){
                         setElement(<img src={'landing.png'} className={`${style}  w-full h-full`}/>)
