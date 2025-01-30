@@ -82,8 +82,8 @@ export function Copylink(props : params){
                     <div className="rounded-2xl hover:bg-gray-800 cursor-pointer" onClick={()=>props.setShowLink(false)}><Cross/></div>
                 </div>
                 <div className="w-full flex gap-2">
-                    <div className="flex justify-center items-center w-full overflow-hidden rounded-xl text-white text-custom bg-gray-800 h-10">
-                        {hash}
+                    <div className={`flex w-full rounded-xl items-center justify-center  bg-gray-800 h-12 px-4 `}>
+                        <p className="text-white w-fit flex flex-wrap text-custom">{hash}</p>
                     </div>
                 </div>
                 <div className="flex w-full justify-around px-2 items-center">
