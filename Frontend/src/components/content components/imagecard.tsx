@@ -11,7 +11,7 @@ export function ImageCard(props : params2){
         <img src="https://i.sstatic.net/xSMT3.png" alt="default" className="h-full w-full"/>
     )
     const handleError = () => {
-        setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className="h-full w-full"/>)
+        setElement(<img src="https://cdn.dribbble.com/userupload/4487190/file/original-d4c3ba33335a133315f0e2dca0332649.png?resize=752x&vertical=center" alt="default" className="h-full w-full"/>)
     };
     useEffect(()=>{
         const style=`h-full w-full overflow-hidden`;
@@ -55,11 +55,11 @@ export function ImageCard(props : params2){
                     }
                 }
                 catch(e){
-                    setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style} onError={handleError}/>)
+                    setElement(<img src="https://cdn.dribbble.com/userupload/4487190/file/original-d4c3ba33335a133315f0e2dca0332649.png?resize=752x&vertical=center" alt="default" className={style} onError={handleError}/>)
                 }
             }
             else{
-                setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style} onError={handleError}/>)
+                setElement(<img src="https://cdn.dribbble.com/userupload/4487190/file/original-d4c3ba33335a133315f0e2dca0332649.png?resize=752x&vertical=center" alt="default" className={style} onError={handleError}/>)
             }
         }
         catch (error) {
