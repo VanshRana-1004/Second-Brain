@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { YouTubeEmbed,XEmbed,InstagramEmbed } from "react-social-media-embed";
 import {TwitterCard} from "./twittercard"
+import captureWebsite from 'capture-website';
 
 interface params2{
     link : string
@@ -10,6 +11,7 @@ export function ImageCard(props : params2){
     const [element,setElement]=useState<React.ReactNode>(
         <img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className="h-full w-full"/>
     )
+
     useEffect(()=>{
         const style=`h-full w-full overflow-hidden`;
         const imageExtensions = /\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|tif|ico|avif|heif|heic|jpx|jp2)$/i;
@@ -42,6 +44,20 @@ export function ImageCard(props : params2){
             }
             else if(props.link.startsWith("https://www.notion.so/")){
                 setElement(<img src={"https://i0.wp.com/iamsteve.in/wp-content/uploads/2020/11/notion-logo.png?ssl=1"} className={style}/>)
+            }
+            else if(props.link.startsWith("https://")){
+                async function capture() {
+                    try {
+                        const buffer = await captureWebsite.buffer(props.link);
+                        const blob = new Blob([buffer], { type: "image/png" });
+                        const url = URL.createObjectURL(blob);
+                        setElement(<img src={url} className="your-css-class" alt="Screenshot" />);
+                    } catch (error) {
+                        console.error("Error capturing website:", error);
+                        setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style}/>);
+                    }
+                }
+                capture();
             }
             else{
                 setElement(<img src="https://cdn.dribbble.com/userupload/14704018/file/original-e2278ac50bd1c945c062e0554e4b733d.png?crop=0x0-6000x4500&format=webp&resize=450x338&vertical=center" alt="default" className={style}/>)
