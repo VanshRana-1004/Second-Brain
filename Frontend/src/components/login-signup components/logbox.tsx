@@ -142,7 +142,7 @@ export function SignUp_Login(props : params){
     const InputStyle=`w-full h-10 rounded-xl outline-none border border-gray-300 shadow-sm text-gray-300  text-md`
     const textStyle=`font-custom text-md font-semibold`
     const placeholderStyle=`text-gray-300 bg-black font-custom text-md font-regular`
-    return <div className={`bg-black border shadow-gray-500 shadow-md rounded-md h-1/2 w-96 ${props.size<=500?'w-72':''} flex flex-col pt-1 px-1 m-auto  items-center justify-between`}>
+    return <div className={`bg-black border shadow-gray-500 shadow-md rounded-md h-[500px] w-96 ${props.size<=500?'w-72':''} flex flex-col pt-1 px-1 m-auto  items-center justify-between`}>
         <ToastContainer/>
         <div className="w-full flex items-baseline justify-end">
             <div className="rounded-2xl hover:bg-gray-800 cursor-pointer" onClick={()=>{props.setLogPage(false),props.setWelcomePage(true)}}><Cross/></div>
