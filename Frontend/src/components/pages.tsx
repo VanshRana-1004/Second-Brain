@@ -36,6 +36,13 @@ export function Page(props : pageParams) {
   const setContentPage = (value: boolean) => setState((prev : params) => ({ ...prev, contentPage: value }));
   const setUp = (value: boolean) => setState((prev : params) => ({ ...prev, up: value }));
   const [loader,setLoader]=useState(false);
+  
+  window.addEventListener("beforeunload", function () {
+    localStorage.removeItem('authToken');
+    setContentPage(false);
+    setWelcomePage(true);
+  });  
+  
   useEffect(()=>{
       setLoader(true);
       setTimeout(()=>{
