@@ -28,7 +28,7 @@ export function Page(props : pageParams) {
   const [state, setState] = useState(getStoredPageState);
 
  useEffect(()=>{
-   if(localStorage.getItem(authToken==null)){
+   if(localStorage.getItem('authToken')==null){
      setState({ welcomePage: true, logPage: false, contentPage: false, up: false  });
    }
  },[])
