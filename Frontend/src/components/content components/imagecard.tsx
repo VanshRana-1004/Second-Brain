@@ -40,10 +40,10 @@ export function ImageCard(props : params2){
             else if(props.link.startsWith("https://www.google.com/")){
                 setElement(<img src={"https://images2.thanhnien.vn/thumb_w/640/528068263637045248/2024/8/23/wired-uk-google-watching-1724377409027-17243774094672016963639.jpg"} className={style} onError={handleError}/>)
             }
-            else if(props.link.startsWith("https://www.notion.so/")){
-                setElement(<img src={"https://i0.wp.com/iamsteve.in/wp-content/uploads/2020/11/notion-logo.png?ssl=1"} className={style}/>)
-            }
-            else if(props.link.startsWith("https://") || props.link.startsWith("https://www.linkedin.com/")){
+            // else if(props.link.startsWith("https://www.notion.so/")){
+            //     setElement(<img src={"https://i0.wp.com/iamsteve.in/wp-content/uploads/2020/11/notion-logo.png?ssl=1"} className={style}/>)
+            // }
+            else if(props.link.startsWith("https://www.notion.so/") || props.link.startsWith("https://") || props.link.startsWith("https://www.linkedin.com/")){
                 try{
                     setElement(<img src={`//image.thum.io/get/${props.link}`} className={`${style}`} onError={handleError}/>)
                     if(props.link=='https://secondbrain-app.vercel.app/'){
