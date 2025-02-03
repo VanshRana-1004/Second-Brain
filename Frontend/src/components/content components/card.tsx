@@ -50,6 +50,38 @@ export function MainCard(props : params1){
         }
         getContent();
         
+    },[]);
+    useEffect(()=>{
+        async function getContent(){
+            try{
+                if(!props.share){
+                    const token=localStorage.getItem('authToken');
+                    const curResponse=await axios.get(`${apiUrl}/api/v1/content`,{
+                        params:{type},
+                        headers:{
+                            Authorization:`Bearer ${token}`
+                        }
+                    });
+                    setResponse(curResponse.data.content)
+                }
+                else{
+                    try{
+                        const curResponse=await axios.get(`${apiUrl}/api/v1/brain/`,{
+                            params: { hash: props.hash, type: type }
+                        })
+                        setResponse(curResponse.data.content)
+                    }catch(e){
+                        console.log('error : '+e);
+                        props.setShowContent(false);
+                    }
+                }
+            }catch(e){
+                props.setShowContent(false);
+                console.log('Required fields are missing');
+            }
+        }
+        getContent();
+        
     },[props.showInput,deleteRender,props.contentType]);
     let style=`grid-cols-4`;
     if(props.size>=1280) style=`grid-cols-4`;
