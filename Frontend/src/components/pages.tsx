@@ -18,6 +18,7 @@ interface pageParams{
 
 export function Page(props : pageParams) {
 
+  
   const getStoredPageState = () => {
     const savedState = localStorage.getItem('pageState');
     return savedState ? JSON.parse(savedState) : { welcomePage: true };
