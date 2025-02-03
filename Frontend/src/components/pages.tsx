@@ -18,14 +18,21 @@ interface pageParams{
 
 export function Page(props : pageParams) {
 
+
   
   const getStoredPageState = () => {
     const savedState = localStorage.getItem('pageState');
-    return savedState ? JSON.parse(savedState) : { welcomePage: true };
+    return savedState ? JSON.parse(savedState) : { welcomePage: true, logPage: false, contentPage: false, up: false  };
   };
 
   const [state, setState] = useState(getStoredPageState);
 
+  useEffect(()=>{
+    if(localstorage.getItem('token')==null){
+      setState({ welcomePage: true, logPage: false, contentPage: false, up: false  })
+    }
+  },[])
+  
   useEffect(() => {
     localStorage.setItem('pageState', JSON.stringify(state));
   }, [state]);
