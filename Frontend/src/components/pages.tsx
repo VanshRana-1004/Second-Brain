@@ -27,11 +27,7 @@ export function Page(props : pageParams) {
 
   const [state, setState] = useState(getStoredPageState);
 
-  useEffect(()=>{
-    if(localStorage.getItem('token')==null){
-      setState({ welcomePage: true, logPage: false, contentPage: false, up: false  })
-    }
-  },[])
+ 
   
   useEffect(() => {
     localStorage.setItem('pageState', JSON.stringify(state));
