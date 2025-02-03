@@ -20,7 +20,7 @@ export function Page(props : pageParams) {
 
   const getStoredPageState = () => {
     const savedState = localStorage.getItem('pageState');
-    return savedState ? JSON.parse(savedState) : { welcomePage: true, logPage: false, contentPage: false, up: false };
+    return savedState ? JSON.parse(savedState) : { welcomePage: true };
   };
 
   const [state, setState] = useState(getStoredPageState);
