@@ -106,20 +106,20 @@ export function Card(props : params){
             );
         }
     }
-    return <div className={`border border-gray-800  rounded-xl h-[420px] w-[310px] m-auto ${props.size==380?'w-[290px]':''} bg-black px-3 p-1 flex flex-col overflow-hidden justify-between` }>
+    return <div className={`border border-gray-800  rounded-xl h-[500px] w-[320px] m-auto ${props.size==380?'w-[290px]':''} bg-black px-3 py-3  flex flex-col overflow-hidden justify-around` }>
             <div className="flex justify-end gap-2">
                 <div className={style} onClick={()=>openLink(props.link)}><Open/></div>
                 {!props.share && <div className={style} onClick={()=>{deleteCard(props._id)}}><Delete/></div>}
             </div>
             <div className="font-bold text-2xl font-custom text-white ml-2 h-8 overflow-hidden">{props.title}</div>
-            <div className="flex flex-wrap font-semibold font-custom text-white ml-2 h-12 overflow-y-auto scrollbar-hide">{props.description}</div>
-            <div className="w-full h-60 border border-gray-800 rounded-xl overflow-hidden ">
+            <div className="flex flex-wrap font-semibold font-custom text-white text-lg tracking-wide ml-2 h-20 overflow-y-auto scrollbar-hide py-2">{props.description}</div>
+            <div className="w-full h-[280px] border border-gray-800 rounded-xl overflow-hidden ">
                 <ImageCard link={props.link}/>
             </div>
-            <div className="p-2 flex gap-1 bg-black flex-wrap h-20 overflow-y-auto scrollbar-hide">
+            <div className="p-2 flex gap-1 bg-black flex-wrap h-24 overflow-y-auto scrollbar-hide">
                 {Array((props.tags || []).length).fill(0).map((x,index)=>(<Tag key={index} name={props.tags[index]} tagRef={false} onClick={()=>{}}/>))}
             </div>
-            <div className="ml-2 text-sm font-semibold font-custom text-white ">Added on : {props.date}</div>
+            <div className="ml-2 text-md font-semibold font-custom text-white ">Added on : {props.date}</div>
         </div>
 }
 
