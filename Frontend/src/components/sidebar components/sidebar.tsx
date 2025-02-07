@@ -16,7 +16,7 @@ export function Sidebar(props : PropsType){
     let style=``;
     
     if(props.size<768){
-        style='w-68';
+        style='w-80';
     }
     else{
         if(!icon) style='w-80';
