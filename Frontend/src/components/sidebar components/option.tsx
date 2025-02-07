@@ -19,10 +19,10 @@ export function Option(props : Option){
     let style=``;
     if(props.showSideBar && !props.icon) style=`justify-between w-72`;
     else style=`justify-center w-8`;
-    if(props.size>=500){
+    if(props.size>=768){
         if(!props.icon) style=`justify-between w-72`
     }
-    else style=`justify-between w-52`;
+    else style=`justify-between w-72`;
     
     return <div className={`ease-in-out transition-all duration-200 ${style} cursor-pointer flex  items-center h-[15%] rounded-xl px-5 hover:bg-gray-700 hover:translate-x-1 `} onClick={props.onClick} onMouseEnter={()=>props.setHover(true)} onMouseLeave={()=>props.setHover(false)}>
         {show || props.size<768?<p className={`font-regular font-custom text-lg py-1 overflow-hidden flex items-center ${(props.hover==true)?"text-white":"text-gray-500"}`}>{props.text}</p>:""}
