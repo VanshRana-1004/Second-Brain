@@ -19,7 +19,7 @@ export function Option(props : Option){
     let style=``;
     if(props.showSideBar && !props.icon) style=`justify-between w-72`;
     else style=`justify-center w-8`;
-    if(props.size>=768){
+    if(props.size>=500){
         if(!props.icon) style=`justify-between w-72`
     }
     else style=`justify-between w-52`;
