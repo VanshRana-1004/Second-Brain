@@ -29,6 +29,7 @@ export function Welcome(props : params){
     }
     return <div className={`h-screen w-screen  flex bg-black ${props.size<=940?'flex-col':''}`}>
                 <div className={`flex w-full mt-4 justify-between h-auto absolute z-10 text-white ${props.size<=500?'px-2':'px-10'}`}>
+                    {props.size>=768 && <img src='https://raw.githubusercontent.com/luyu0279/BrainyAi/main/misc/logo.png' className='h-12 w-12'></img>}
                     <Title color={"white"} size={props.size}/>
                     <div className={`flex  ${props.size<=500?'gap-2':'gap-10'}`}>
                         <Button variant={"signup"} text={"Sign Up"} onClick={signupFxn} size={props.size<=500?'sm':'lg'} ></Button>
