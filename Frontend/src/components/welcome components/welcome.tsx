@@ -11,6 +11,10 @@ interface params{
 export function Welcome(props : params){
     const [isLoading,setIsLoading]=useState(true);
     const [opaque,setOpaque]=useState(false);
+    const [guest,setGuest]=useState(false);
+    useEffect(()=>{
+            setGuest(true);
+    },[]);
     useEffect(()=>{
         let interval=setInterval(()=>setOpaque(!opaque),2000);
         return ()=>{
@@ -27,7 +31,7 @@ export function Welcome(props : params){
         props.setWelcomePage(false);
         props.setUp(false)
     }
-    return <div className={`h-screen w-screen  flex bg-black ${props.size<=940?'flex-col':''}`}>
+    return <div className={`h-screen w-screen flex bg-black ${props.size<=940?'flex-col':''}`}>
                 <div className={`flex w-full mt-4 justify-between h-auto absolute z-10 text-white ${props.size<=500?'px-2':'px-10'}`}>
                     <div className='flex gap-2'>
                         {props.size>=768 && <img src='https://raw.githubusercontent.com/luyu0279/BrainyAi/main/misc/logo.png' className='h-12 w-12'></img>}
@@ -52,13 +56,20 @@ export function Welcome(props : params){
                             – where everything important is just a click away!
                     </div>
                 </div>
-                <div className={`flex flex-col flex-1 bg-gradient-to-r from-bg-black to-bg-gray-950  items-center text-white font-custom font-semibols text-2xl pb-20 px-10 gap-10 ${props.size<=940?'py-40':'py-72'}`}>
+                <div className={`flex flex-col flex-1 bg-gradient-to-r from-bg-black to-bg-gray-950  items-center text-white font-custom font-semibols text-2xl pb-20 px-10 gap-10 ${props.size<=940?'py-40':'py-52'}`}>
                     <div className={`text-gray-400 flex h-auto flex-col text-3xl font-semibold duration-1000 ${opaque?'opacity-0':'opacity-100'} ${props.size<940?'text-2xl':''} ${props.size<=500?'text-xl':''} `}>
                         <p>- Smart Organization,</p>
                         <p>- Easy Access, and</p>
                         <p>- Share Your Brain effortlessly!</p>
                     </div>
-                    <div className="mt-30 justify-self-end self-center"><Button variant={"getStarted"} text={"Get Started"} onClick={()=>{props.setLogPage(true),props.setWelcomePage(false),props.setUp(true)}} /></div>
+                    
+                    <div className=" justify-self-end self-center"><Button variant={"getStarted"} text={"Get Started"} onClick={()=>{props.setLogPage(true),props.setWelcomePage(false),props.setUp(true)}} /></div>
+                    
+                    <div className={`translate-y-12 backdrop-blur bg-white/5 border-white/30 shadow shadow-white/10  rounded-2xl p-2 px-16 flex flex-col items-center hover:scale-105 cursor-default duration-[2000ms] transform ${!guest?'opacity-0':'opacity-100'}`}>
+                        <p className={`font-custom text-base font-semibold duration-[5000ms] ${!guest?'opacity-0':'opacity-100'}`}>Explore as a guest</p>
+                        <p className={`font-custom text-base duration-[5000ms] ${!guest?'opacity-0':'opacity-100'}`}>username : <b className="text-blue-500">johndoe</b></p>
+                        <p className={`font-custom text-base duration-[5000ms] ${!guest?'opacity-0':'opacity-100'}`}>password : <b className="text-blue-500">123456</b></p>
+                    </div>
                 </div>
             </div>
 }
