@@ -84,8 +84,8 @@ export function MainCard(props : params1){
         
     },[props.showInput,deleteRender,props.contentType]);
     let style=`grid-cols-4`;
-    if(props.size>=1280) style=`grid-cols-4`;
-    else if(props.size>=1260) style=`grid-cols-3`
+    if(props.size>=1320) style=`grid-cols-4`;
+    else if(props.size>=1190) style=`grid-cols-3`
     else if(props.size>=768) style='grid-cols-2';
     else style='grid-cols-1'
     return<>
