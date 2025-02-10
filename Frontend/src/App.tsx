@@ -19,7 +19,7 @@ function MainComponent(){
   useEffect(()=>{
     function handle(){
       const cur=window.innerWidth;
-      if(cur>=1320) setSize(1320);
+      if(cur>=1280) setSize(1280);
       else if(cur>=1260) setSize(1260);
       else if(cur>=1190) setSize(1190);
       else if(cur>=1080) setSize(1000);
