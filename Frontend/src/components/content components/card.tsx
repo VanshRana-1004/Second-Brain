@@ -144,8 +144,8 @@ export function Card(props : params){
                 {!props.share && <div className={style} onClick={()=>{deleteCard(props._id)}}><Delete/></div>}
             </div>
             <div className="font-bold text-2xl font-custom text-white ml-2 h-8 overflow-hidden">{props.title}</div>
-            <div className="flex flex-wrap font-semibold font-custom text-white text-lg tracking-wide ml-2 h-20 overflow-y-auto scrollbar-hide py-2">{props.description}</div>
-            <div className="w-full h-[280px] border border-gray-800 rounded-xl overflow-hidden ">
+            <div className="flex flex-wrap font-semibold font-custom text-white text-md tracking-wide ml-2 h-20 overflow-y-auto scrollbar-hide py-2">{props.description}</div>
+            <div className="w-full h-[300px] border border-gray-800 rounded-xl overflow-hidden ">
                 <ImageCard link={props.link}/>
             </div>
             <div className="p-2 flex gap-1 bg-black flex-wrap h-24 overflow-y-auto scrollbar-hide">
