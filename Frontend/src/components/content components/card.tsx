@@ -143,8 +143,8 @@ export function Card(props : params){
                 <div className={style} onClick={()=>openLink(props.link)}><Open/></div>
                 {!props.share && <div className={style} onClick={()=>{deleteCard(props._id)}}><Delete/></div>}
             </div>
-            <div className="font-bold text-2xl font-custom text-white ml-2 h-8 overflow-hidden">{props.title}</div>
-            <div className="flex flex-wrap font-semibold font-custom text-white text-md tracking-wide ml-2 h-12 overflow-y-auto scrollbar-hide py-2">{props.description}</div>
+            <div className="font-bold text-2xl font-custom text-white ml-2 h-10 overflow-hidden">{props.title}</div>
+            <div className="flex flex-wrap font-semibold font-custom text-white text-md tracking-wide ml-2 h-8 overflow-y-auto scrollbar-hide py-2">{props.description}</div>
             <div className="w-full h-[300px] border border-gray-800 rounded-xl overflow-hidden ">
                 <ImageCard link={props.link}/>
             </div>
