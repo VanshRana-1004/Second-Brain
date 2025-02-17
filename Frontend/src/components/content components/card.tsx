@@ -138,7 +138,7 @@ export function Card(props : params){
             );
         }
     }
-    return <div className={`border border-gray-800  rounded-xl h-[400px] w-[315px] m-auto ${props.size==380?'w-[290px]':''} bg-black px-3 py-3  flex flex-col overflow-hidden justify-around` }>
+    return <div className={`border border-gray-800  rounded-xl h-[415px] w-[315px] m-auto ${props.size==380?'w-[290px]':''} bg-black px-3 py-3  flex flex-col overflow-hidden justify-around` }>
             <div className="flex justify-end gap-2">
                 <div className={style} onClick={()=>openLink(props.link)}><Open/></div>
                 {!props.share && <div className={style} onClick={()=>{deleteCard(props._id)}}><Delete/></div>}
